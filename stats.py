@@ -92,7 +92,7 @@ class Statistics:
     test_acc = self.test_correct / self.test_num_samples
     test_rec_loss = self.test_rec_loss / self.test_steps
     test_marg_loss = self.test_marg_loss / self.test_steps
-    #print("Epoch: {:3.0f} \t Time: {:3.0f} \t Test: {:.3f} \t Train: {:.3f} \t Accuracy: {:3.4f} Reconstruction: {:3.4f}".format(epoch, time_spent, test_loss, train_loss, test_acc*100, rec_loss))
+    print("Epoch: {:3.0f} \t Time: {:3.0f} \t Test: {:.3f} \t Train: {:.3f} \t Accuracy: {:3.4f} Reconstruction: {:3.4f}".format(epoch, time_spent, test_loss, train_loss, test_acc*100, rec_loss))
     self.logger_val.add_scalar("accuracy", test_acc, global_step=self.global_step)
     self.logger_val.add_scalar("loss", test_loss, global_step=self.global_step)
     self.logger_val.add_scalar("reconstruction_loss", test_rec_loss, global_step=self.global_step)

@@ -179,7 +179,7 @@ class ReconstructionModule(nn.Module):
       max_length_indices = target.max(dim=1)[1]
     
     masked = Variable(x.new_tensor(torch.eye(self.num_capsules)))
-    
+    masked=masked.cuda()
     masked = masked.index_select(dim=0, index=max_length_indices.data)
     decoder_input = (x * masked[:, :, None, None]).view(batch_size, -1)
 
@@ -234,6 +234,8 @@ class ConvReconstructionModule(nn.Module):
       max_length_indices = target.max(dim=1)[1]
     
     masked = x.new_tensor(torch.eye(self.num_capsules))
+
+    masked=masked.cuda()
     masked = masked.index_select(dim=0, index=max_length_indices.data)
 
     decoder_input = (x * masked[:, :, None, None]).view(batch_size, -1)
@@ -300,6 +302,7 @@ class SmallNorbConvReconstructionModule(nn.Module):
     else:
       max_length_indices = target.max(dim=1)[1]
     masked = Variable(x.new_tensor(torch.eye(self.num_capsules)))
+    masked=masked.cuda()
     masked = masked.index_select(dim=0, index=max_length_indices.data)
 
     decoder_input = (x * masked[:, :, None, None]).view(batch_size, -1)

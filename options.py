@@ -27,7 +27,7 @@ def create_options():
     parser = OptionParser()
     parser.add_option("-l", "--lr", dest="learning_rate", default=DEFAULT_LEARNING_RATE, type="float",
                       help="learning rate")
-    parser.add_option("-d","--decoder", dest="decoder", default=DEFAULT_DECODER,
+    parser.add_option("-d","--decoder", dest="decoder", default='Conv',
                       help="Decoder structure 'FC' or 'Conv'")
     parser.add_option("-b", "--batch_size", dest="batch_size", default=DEFAULT_BATCH_SIZE, type="int")
     parser.add_option("-e", "--epochs", dest="epochs", default=DEFAULT_EPOCHS, type="int",
@@ -55,7 +55,7 @@ def create_options():
                       help="Set annealing function for alpha. Options: [none, 1, 2]")
     parser.add_option("--leaky", dest="leaky_routing", default=False, action="store_true", 
                       help="Turn on/off leaky routing (Add orphan class for reconstruction)")
-    parser.add_option("--model", dest="model", help="Set model name")
+    parser.add_option("--model", dest="model",default='FC14', help="Set model name")
     
 
     
